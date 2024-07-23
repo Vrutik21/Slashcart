@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import axios from "axios";
 import { Link } from "react-router-dom";
+// import { json } from "react-router-dom";
+// import { BiSunFill, BiMoon } from "react-icons/bi";
 
 const Navbar = ({ onSelectCategory, onSearch }) => {
   const getInitialTheme = () => {
@@ -76,7 +78,7 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
       <header>
         <nav className="navbar navbar-expand-lg fixed-top">
           <div className="container-fluid">
-            <Link to={""}>
+            <Link to={"/"}>
               <a className="navbar-brand" href="">
                 Slashcart
               </a>
@@ -99,32 +101,31 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link to={"/"}>
-                    <a className="nav-link active" aria-current="page" href="/">
+                    <a className="nav-link active" aria-current="page" href="">
                       Home
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"add_product"}>
-                    <a className="nav-link" href="/add_product">
+                  <Link to={"/add_product"}>
+                    <a className="nav-link" href="">
                       Add Product
                     </a>
                   </Link>
                 </li>
 
                 <li className="nav-item dropdown">
-                  <Link to={"/"}>
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="/"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Categories
-                    </a>
-                  </Link>
-
+                  {/* <Link to={"/"}> */}
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Categories
+                  </a>
+                  {/* </Link> */}
                   <ul className="dropdown-menu">
                     {categories.map((category) => (
                       <li key={category}>
@@ -138,7 +139,6 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                     ))}
                   </ul>
                 </li>
-
                 <li className="nav-item"></li>
               </ul>
               <button className="theme-btn" onClick={() => toggleTheme()}>
@@ -150,7 +150,7 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
               </button>
               <div className="d-flex align-items-center cart">
                 <Link to={"/cart"}>
-                  <a href="/cart" className="nav-link text-dark">
+                  <a href="" className="nav-link text-dark">
                     <i
                       className="bi bi-cart me-2"
                       style={{ display: "flex", alignItems: "center" }}
@@ -175,12 +175,11 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                     {searchResults.length > 0
                       ? searchResults.map((result) => (
                           <li key={result.id} className="list-group-item">
-                            <a
-                              href={`/product/${result.id}`}
-                              className="search-result-link"
-                            >
-                              <span>{result.name}</span>
-                            </a>
+                            <Link to={`/product/${result.id}`}>
+                              <a href="" className="search-result-link">
+                                <span>{result.name}</span>
+                              </a>
+                            </Link>
                           </li>
                         ))
                       : noResults && (

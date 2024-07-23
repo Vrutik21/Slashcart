@@ -10,7 +10,7 @@ const AddProduct = () => {
     category: "",
     stockQuantity: "",
     releaseDate: "",
-    ProductAvailable: false,
+    productAvailable: false,
   });
   const [image, setImage] = useState(null);
 
@@ -177,12 +177,9 @@ const AddProduct = () => {
                 type="checkbox"
                 name="productAvailable"
                 id="gridCheck"
-                checked={product.ProductAvailable}
+                checked={product.productAvailable}
                 onChange={(e) =>
-                  setProduct({
-                    ...product,
-                    ProductAvailable: e.target.checked,
-                  })
+                  setProduct({ ...product, productAvailable: e.target.checked })
                 }
               />
               <label className="form-check-label">Product Available</label>
